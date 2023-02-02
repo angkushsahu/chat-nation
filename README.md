@@ -6,22 +6,18 @@ You can also create groups and add people you like. You can further update the g
 
 ## Tech Stack
 
-![Tech Stack](https://skillicons.dev/icons?i=ts,react,css,nodejs,express,mongodb,vercel&theme=dark)
+![Tech Stack](https://skillicons.dev/icons?i=ts,react,redux,sasss,nodejs,express,mongodb&theme=dark)
 
-Typescript - React - CSS - Node - Express - MongoDB - Vercel
+Typescript - React - Redux - SASS - Node - Express - MongoDB
 
 ### Visit :- [Chat-Nation](https://chat-nation.herokuapp.com/)
-
-<!-- Update the image of this project -->
-
-<!-- ![Chat Nation](https://res.cloudinary.com/dvhucdquc/image/upload/v1660402110/ProjectsHomeImages/chat-nation_uzodci.png) -->
 
 ## Install
 
 Download the zipped directory of this project by clicking on the green button above or clone it to your machine using the following command
 
-```bash
-git clone <link-to-be-updated>
+```git
+git clone https://github.com/angkushsahu/chat-nation.git
 ```
 
 After installing the project, go to the root directory of this project and hit the commands below
