@@ -6,7 +6,7 @@ You can also create groups and add people you like. You can further update the g
 
 ## Tech Stack
 
-![Tech Stack](https://skillicons.dev/icons?i=ts,react,redux,sasss,nodejs,express,mongodb&theme=dark)
+![Tech Stack](https://skillicons.dev/icons?i=ts,react,redux,sass,nodejs,express,mongodb&theme=dark)
 
 Typescript - React - Redux - SASS - Node - Express - MongoDB
 
