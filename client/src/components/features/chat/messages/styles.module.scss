@@ -1,0 +1,15 @@
+@use "styles/variables" as *;
+@use "styles/breakpoints" as *;
+
+.messageSection {
+    height: $chat-full-screen;
+    flex: 1;
+    position: relative;
+    isolation: isolate;
+    @include breakpoints(responsive-messages) {
+        display: none;
+        &.show {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,33 @@
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+
+.visit_profile {
+    @include flexBox;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 4rem 2rem 2rem;
+    height: $chat-full-screen;
+    position: relative;
+    isolation: isolate;
+    & > .avatar {
+        $dimension: 15rem;
+        width: $dimension;
+        height: $dimension;
+        margin-bottom: 3rem;
+    }
+    p,
+    h2 {
+        margin: 0;
+    }
+    p {
+        font-size: 1.8rem;
+    }
+    .add_to_group,
+    .start_conversation {
+        max-width: 20rem;
+        width: 100%;
+    }
+    .start_conversation {
+        margin-top: 2rem;
+    }
+}

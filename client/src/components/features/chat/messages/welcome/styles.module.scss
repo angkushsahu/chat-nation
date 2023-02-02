@@ -1,0 +1,18 @@
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+
+.welcome {
+    background-color: $secondary-color;
+    height: $chat-full-screen;
+    @include flexBox;
+    flex-direction: column;
+    align-self: center;
+    img {
+        $dimension: 40rem;
+        width: $dimension;
+        height: $dimension;
+    }
+    h2 {
+        color: $primary-color;
+    }
+}

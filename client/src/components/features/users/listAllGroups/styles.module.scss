@@ -1,0 +1,52 @@
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+
+.groups_list {
+    max-width: 40rem;
+    width: 100%;
+    position: absolute;
+    inset: 0;
+    left: auto;
+    padding: 1.5rem;
+    background-color: $primary-hover-color;
+    box-shadow: $thick-shadow;
+    transition: transform 300ms ease, opacity 300ms ease;
+    transform-origin: right;
+    overflow-y: auto;
+    &.show {
+        transform: scaleX(100%);
+        opacity: 1;
+    }
+    &.hide {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+    & > .close {
+        cursor: pointer;
+        $dimension: 2.5rem;
+        color: #fff;
+        width: $dimension;
+        height: $dimension;
+        margin: 0 0 1rem auto;
+    }
+    .loading_component {
+        width: fit-content;
+        margin: 0 auto;
+        margin-top: 4rem;
+    }
+    .group {
+        cursor: pointer;
+        @include flexBox(flex-start);
+        gap: 2rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        &:hover {
+            background-color: $primary-color;
+        }
+        &_logo {
+            $dimension: 2rem;
+            width: $dimension;
+            height: $dimension;
+        }
+    }
+}

@@ -1,0 +1,49 @@
+import "./database";
+
+import express from "express";
+const app = express();
+
+import { Locals } from "./express";
+app.use(function (req, res, next) {
+    res.typedLocals = res.locals as Locals;
+    next();
+});
+
+const limit = "1000mb";
+app.use(express.urlencoded({ extended: true, limit }));
+app.use(express.json({ limit }));
+
+import cors from "cors";
+app.use(cors({ credentials: true, origin: true }));
+// const whiteListedUrls = ["http://localhost:3000"];
+// app.use(
+//     cors({
+//         credentials: true,
+//         origin: function (origin, callBack) {
+//             if (whiteListedUrls.indexOf(origin!) !== -1) {
+//                 callBack(null, true);
+//             } else {
+//                 callBack(new Error("Not a white-listed domain"));
+//             }
+//         },
+//         methods: ["GET", "PUT", "POST", "DELETE"],
+//     })
+// );
+
+import cookieParser from "cookie-parser";
+app.use(cookieParser());
+
+import { authRoutes, chatRoutes, messageRoutes, userRoutes } from "./routes";
+app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/message", messageRoutes);
+app.use("/api/chat", chatRoutes);
+
+import { error } from "./middlewares";
+app.use(error.invalidUrl);
+app.use(error.errors);
+
+const port = process.env.PORT || 8080;
+const server = app.listen(port, () => console.log(`Listening on http://localhost:${port}/`));
+
+export default server;

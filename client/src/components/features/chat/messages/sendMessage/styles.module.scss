@@ -1,0 +1,54 @@
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+@use "styles/breakpoints" as *;
+
+.sendMessage {
+    @include flexBox;
+    position: absolute;
+    inset: 0;
+    top: auto;
+    background-color: $tertiary-color;
+    height: $header-height;
+    padding: 1rem 1.5rem;
+    gap: 1.5rem;
+    .toggleEmoji {
+        font-size: 3rem;
+        cursor: pointer;
+        color: $primary-color;
+    }
+    input,
+    button {
+        height: 4.2rem;
+    }
+    input {
+        padding: 1rem;
+        border-radius: 0.4rem;
+        flex: 1;
+        height: 100%;
+        cursor: pointer;
+        background-color: transparent;
+        color: $primary-color;
+    }
+    button {
+        background-color: transparent;
+        &.show {
+            display: inline-block;
+        }
+        &.hide {
+            display: none;
+        }
+        .sendIcon {
+            font-size: 3rem;
+            color: $primary-color;
+        }
+        @include breakpoints(mobile-lg) {
+            padding: 0.5rem;
+        }
+    }
+    @include breakpoints(mobile-lg) {
+        font-size: 1.3rem;
+        padding: 0 1rem 0;
+        gap: 0;
+        height: $responsive-header-height;
+    }
+}

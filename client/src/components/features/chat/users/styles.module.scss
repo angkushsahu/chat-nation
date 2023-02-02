@@ -1,0 +1,83 @@
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+@use "styles/breakpoints" as *;
+
+.users {
+    height: calc($chat-full-screen - $header-height);
+    max-width: 50rem;
+    width: 100%;
+    @include breakpoints(responsive-messages) {
+        display: none;
+        &.show {
+            display: block;
+        }
+    }
+
+    .loading_component {
+        @include flexBox;
+        padding-top: 4rem;
+        height: 100%;
+    }
+    .users_list {
+        background-color: $tertiary-color;
+        scrollbar-width: thin;
+        height: 100%;
+        overflow: auto;
+        h3,
+        p {
+            margin: 0;
+        }
+        & > .userBanner {
+            cursor: pointer;
+            $spacing: 1.5rem;
+            padding: 2rem $spacing;
+            @include flexBox(space-between);
+            &.active {
+                background-color: $tertiary-hover-color;
+            }
+            &:hover {
+                background-color: $tertiary-hover-color;
+            }
+            & > .avatarAndName {
+                @include flexBox;
+                gap: $spacing;
+                & > .userAvatar {
+                    img,
+                    svg {
+                        $dimension: 3.5rem;
+                        width: $dimension;
+                        height: $dimension;
+                        object-fit: contain;
+                        border-radius: 50%;
+                    }
+                }
+                & > .nameAndLastMessage > p {
+                    &.name {
+                        font-weight: 700;
+                    }
+                    &.lastMessage {
+                        font-size: 1.4rem;
+                        margin-top: 0.5rem;
+                        color: $tertiary-darker-shade;
+                    }
+                }
+            }
+            & > .notification_pill {
+                @include flexBox;
+                $dimension: 1rem;
+                width: $dimension;
+                height: $dimension;
+                background-color: $primary-color;
+                border-radius: 50%;
+            }
+            @include breakpoints(mobile-md) {
+                padding: 1.5rem 1rem;
+            }
+        }
+    }
+
+    @include breakpoints(responsive-messages) {
+        width: 100%;
+        max-width: none;
+    }
+}

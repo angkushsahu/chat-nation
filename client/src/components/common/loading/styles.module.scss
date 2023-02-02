@@ -1,0 +1,25 @@
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+
+.loading {
+    min-height: 100vh;
+    @include flexBox;
+    &Circle {
+        $dimension: 10rem;
+        width: $dimension;
+        height: $dimension;
+        border-radius: 50%;
+        border: 1rem solid $secondary-color;
+        border-top-color: transparent;
+        animation: rotate 1s linear infinite;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}

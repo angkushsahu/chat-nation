@@ -1,0 +1,69 @@
+@use "styles/mixins" as *;
+@use "styles/variables" as *;
+@use "styles/breakpoints" as *;
+
+.home {
+    padding: 5rem;
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    @include flexBox;
+    gap: 6rem;
+    & > .homeBackground {
+        position: fixed;
+        z-index: -2;
+        inset: 0;
+        opacity: 0.5;
+        width: 100%;
+        height: 100%;
+    }
+    & > section {
+        & > h1 {
+            font-size: 4rem;
+            margin: 1rem 0;
+        }
+        & > h2 {
+            margin: 1rem 0 4rem;
+            max-width: 45ch;
+            color: $secondary-color;
+        }
+        & > .homeImage {
+            max-width: 50rem;
+            width: 100%;
+        }
+        & > .buttonGroup {
+            & > .loginButton {
+                margin-right: 3rem;
+            }
+            & > .signupLink {
+                text-decoration: underline;
+                text-underline-position: under;
+                &:hover {
+                    color: $secondary-hover-color;
+                }
+            }
+        }
+    }
+    @include breakpoints(desktop-sm) {
+        flex-direction: column;
+        text-align: center;
+    }
+    @include breakpoints(tablet-sm) {
+        padding: 2rem;
+        text-align: left;
+        & > section {
+            & > h1 {
+                font-size: 3rem;
+            }
+            & > h2 {
+                font-size: 2rem;
+            }
+            & > .buttonGroup {
+                & > button,
+                & > .signupLink {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+}

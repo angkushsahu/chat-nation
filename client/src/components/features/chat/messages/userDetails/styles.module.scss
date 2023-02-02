@@ -1,0 +1,134 @@
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+@use "styles/breakpoints" as *;
+
+.userDetails {
+    color: $tertiary-color;
+    padding: 2rem;
+    max-width: 40rem;
+    width: 100%;
+    position: absolute;
+    inset: 0;
+    left: auto;
+    background-color: $primary-color;
+    transition: transform 300ms ease, opacity 300ms ease;
+    transform-origin: right;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    box-shadow: $thick-shadow;
+    &::-webkit-scrollbar {
+        width: 0.6rem;
+        &-track {
+            background-color: transparent;
+        }
+        &-thumb {
+            background-color: $tertiary-color;
+            &:hover {
+                background-color: $secondary-hover-color;
+            }
+        }
+    }
+    &.hide {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+    &.show {
+        transform: scaleX(100%);
+        opacity: 1;
+    }
+    & > .close {
+        cursor: pointer;
+        $dimension: 2.6rem;
+        width: $dimension;
+        height: $dimension;
+        margin-left: auto;
+    }
+    .avatar {
+        margin: 4rem auto 0;
+        $dimension: 8rem;
+        width: $dimension;
+        height: $dimension;
+        border-radius: 50%;
+        @include breakpoints(mobile-md) {
+            margin-top: 2rem;
+        }
+    }
+    .lighten {
+        font-size: 1.4rem;
+        color: $secondary-color;
+    }
+    form {
+        input {
+            &[type="file"] {
+                display: none;
+            }
+            &[type="text"] {
+                background-color: transparent;
+                border: 1px solid #fff;
+                padding: 1rem;
+                margin: 2rem auto;
+                border-radius: 1rem;
+                width: 100%;
+            }
+        }
+        & > button {
+            &.update_form {
+                width: 100%;
+                padding: 0.6rem;
+            }
+            &.cancel_form {
+                background-color: transparent;
+                color: $secondary-color;
+                margin: 1rem auto 3rem;
+                padding: 0.6rem;
+                display: block;
+                font-weight: 400;
+                text-underline-position: under;
+                text-decoration: underline;
+            }
+        }
+    }
+    .name_edit {
+        @include flexBox;
+        gap: 2rem;
+        .edit {
+            cursor: pointer;
+            $dimension: 1.5rem;
+            width: $dimension;
+            height: $dimension;
+        }
+    }
+
+    .group_members > .group_member {
+        @include flexBox(space-between, flex-start);
+        .member_info {
+            @include flexBox(flex-start);
+            gap: 2rem;
+            margin-bottom: 2rem;
+            .group_member__avatar {
+                $dimension: 4rem;
+                width: $dimension;
+                height: $dimension;
+            }
+            p {
+                margin: 0;
+                &.thick {
+                    font-weight: 600;
+                }
+                &.light {
+                    font-weight: 300;
+                }
+            }
+        }
+        .delete_icon,
+        .crown_icon {
+            $dimension: 1.5rem;
+            width: $dimension;
+            height: $dimension;
+            margin-top: 1rem;
+        }
+        .delete_icon {
+            cursor: pointer;
+        }
+    }
+}

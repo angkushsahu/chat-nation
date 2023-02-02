@@ -1,0 +1,166 @@
+@use "./mixins" as *;
+@use "./variables" as *;
+@use "./breakpoints" as *;
+
+.root {
+    background-color: $primary-color;
+    min-height: 100vh;
+    color: #ffffff;
+    scrollbar-color: $tertiary-color transparent;
+}
+
+// ----------------- Emoji picker styles -----------------
+form {
+    aside.EmojiPickerReact.epr-main {
+        background-color: $tertiary-color;
+        position: absolute;
+        left: 1rem;
+        top: -46rem;
+        box-shadow: $shadow;
+    }
+}
+
+.EmojiPickerReact li.epr-emoji-category > .epr-emoji-category-label {
+    --epr-category-label-bg-color: $primary-color;
+    --epr-category-label-text-color: #000000;
+    background-color: var(--epr-category-label-bg-color);
+    color: var(--epr-category-label-text-color);
+}
+// ----------------- Emoji picker styles -----------------
+
+::-webkit-scrollbar {
+    width: 1rem;
+    &-track {
+        background-color: transparent;
+    }
+    &-thumb {
+        background-color: $tertiary-color;
+        &:hover {
+            background-color: $secondary-hover-color;
+        }
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+input,
+button {
+    border: none;
+    outline: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    padding: 0.8rem 3rem;
+    border-radius: 0.4rem;
+    font-weight: 600;
+    background-color: $secondary-color;
+    color: $primary-color;
+    &:hover {
+        background-color: $secondary-hover-color;
+    }
+}
+
+.form-container {
+    min-height: 100vh;
+    @include flexBox(flex-end);
+    @include breakpoints(tablet-md) {
+        justify-content: center;
+    }
+    isolation: isolate;
+    & > .image-container {
+        position: fixed;
+        z-index: -1;
+        inset: 0;
+        & > img {
+            object-fit: cover;
+            height: 100%;
+        }
+        @include breakpoints(tablet-md) {
+            display: none;
+        }
+    }
+    & > form {
+        background-color: $primary-color;
+        padding: 5rem;
+        max-width: 60rem;
+        width: 100%;
+        min-height: 100vh;
+        @include breakpoints(mobile-md) {
+            padding: 2rem;
+        }
+        & > h1,
+        & > h2 {
+            margin: 0 0 3rem;
+        }
+        & .avatar-image--container {
+            @include flexBox;
+            width: fit-content;
+            margin: 0 auto 2rem;
+            & > .avatar-image {
+                $dimension: 10rem;
+                width: $dimension;
+                height: $dimension;
+                object-fit: contain;
+                border-radius: 50%;
+                clip-path: circle(50% at 50% 50%);
+            }
+        }
+        & > button {
+            margin-top: 3rem;
+            width: 100%;
+        }
+        & .more-links--wrapper {
+            @include flexBox(flex-end);
+            margin-top: 1rem;
+            & > .more-links {
+                font-size: 1.4rem;
+                color: $secondary-color;
+            }
+        }
+        & > .input-container {
+            border-bottom: 2px solid gray;
+            position: relative;
+            padding: 1rem;
+            & + .input-container {
+                margin-top: 1.5rem;
+            }
+            &.avatar-container {
+                border: 2px solid gray;
+                border-radius: 0.4rem;
+                margin-top: 2.5rem;
+                cursor: pointer;
+                & > label {
+                    text-align: center;
+                }
+                & > input[type="file"] {
+                    display: none;
+                }
+            }
+            & > label {
+                font-size: 1.4rem;
+                color: $secondary-color;
+            }
+            & > label,
+            & > input {
+                display: block;
+                width: 100%;
+                cursor: pointer;
+            }
+            & > input {
+                background-color: transparent;
+                padding: 0.5rem;
+            }
+            & > svg {
+                cursor: pointer;
+                position: absolute;
+                right: 1rem;
+                bottom: 1.5rem;
+                font-size: 2rem;
+            }
+        }
+    }
+}

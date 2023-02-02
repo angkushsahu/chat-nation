@@ -1,0 +1,16 @@
+$primary-color: hsl(235, 21%, 21%);
+$secondary-color: hsl(207, 21%, 90%);
+$secondary-hover-color: hsl(207, 21%, 70%);
+$tertiary-color: hsl(197, 24%, 94%);
+$tertiary-hover-color: hsl(207, 21%, 85%);
+$primary-hover-color: hsl(235, 22%, 30%);
+$tertiary-darker-shade: hsl(198, 44%, 30%);
+$card-hover: hsl(208, 24%, 88%);
+$shadow: hsla(249, 59%, 11%, 0.15) 0px 10px 30px 0px;
+$input-box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+$thick-shadow: #00000040 0px 54px 55px, #0000001f 0px -12px 30px, #0000001f 0px 4px 6px, #0000002b 0px 12px 13px, #00000017 0px -3px 5px;
+$neuro-effect: 20px 20px 40px #1f2030, -20px -20px 40px #373a54;
+$header-height: 7.56rem;
+$chat-full-screen: calc(100vh - $header-height);
+$responsive-header-height: 5rem;
+$responsive-chat-full-screen: calc(100vh - $responsive-header-height);

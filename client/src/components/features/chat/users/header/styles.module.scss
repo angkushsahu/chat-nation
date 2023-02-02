@@ -1,0 +1,32 @@
+@use "styles/mixins" as *;
+@use "styles/variables" as *;
+
+.userHeader {
+    background-color: $tertiary-color;
+    padding: 1.5rem 1rem;
+    height: $header-height;
+    .searchBox {
+        @include flexBox;
+        box-shadow: $input-box-shadow;
+        background-color: transparent;
+        cursor: pointer;
+        border-radius: 1rem;
+        padding: 0 1rem;
+        gap: 1rem;
+        svg {
+            cursor: pointer;
+            font-size: 2rem;
+            color: $tertiary-darker-shade;
+        }
+        input {
+            color: $primary-color;
+            cursor: pointer;
+            background-color: transparent;
+            padding: 1rem;
+            width: 100%;
+            &::placeholder {
+                color: $tertiary-darker-shade;
+            }
+        }
+    }
+}

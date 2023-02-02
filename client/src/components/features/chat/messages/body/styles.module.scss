@@ -1,0 +1,98 @@
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+@use "styles/breakpoints" as *;
+
+.body {
+    box-shadow: $shadow inset;
+    background-color: $secondary-color;
+    $extra-padding: 2rem;
+    height: calc($chat-full-screen - $header-height);
+    padding: $header-height $extra-padding 0;
+    overflow: auto;
+
+    .message_box__container {
+        @include flexBox;
+        align-items: flex-start;
+        gap: 1rem;
+        margin: 2rem 0;
+        &.messageByMe {
+            justify-content: flex-end;
+        }
+        &.messageByThem {
+            justify-content: flex-start;
+        }
+        .user_avatar {
+            $dimension: 3rem;
+            width: $dimension;
+            height: $dimension;
+        }
+        .messageBox {
+            max-width: 60%;
+            width: fit-content;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            padding: 1.5rem 2rem;
+            &.messageByThem {
+                background-color: #ffffff;
+                color: $primary-color;
+                border-radius: 0 3.5rem 3.5rem;
+                @include breakpoints(mobile-lg) {
+                    border-radius: 0 1rem 1rem;
+                }
+            }
+            &.messageByMe {
+                color: $tertiary-color;
+                background-color: $primary-color;
+                border-radius: 3.5rem 3.5rem 0;
+                @include breakpoints(mobile-lg) {
+                    border-radius: 1rem 1rem 0;
+                }
+            }
+            & > p {
+                margin: 0;
+                &.user_name {
+                    font-weight: 700;
+                    margin-bottom: 0.5rem;
+                    color: $primary-color;
+                }
+            }
+            @include breakpoints(mobile-lg) {
+                max-width: 80%;
+                font-size: 1.3rem;
+                padding: 1rem 1.5rem;
+            }
+        }
+        @include breakpoints(mobile-lg) {
+            gap: 0.5rem;
+        }
+        &.typing_animation {
+            & > div {
+                position: relative;
+                isolation: isolate;
+                &::after {
+                    border-radius: 0 3.5rem 3.5rem;
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    background-color: hsla(0, 0%, 87%, 90%);
+                    z-index: -1;
+                    animation: typing_animation 700ms ease infinite forwards alternate-reverse;
+                    @include breakpoints(mobile-lg) {
+                        border-radius: 0 1rem 1rem;
+                    }
+                }
+                @keyframes typing_animation {
+                    from {
+                        width: 0%;
+                    }
+                    to {
+                        width: 100%;
+                    }
+                }
+                cursor: progress;
+            }
+        }
+    }
+    @include breakpoints(mobile-lg) {
+        height: calc($chat-full-screen - $responsive-header-height);
+    }
+}

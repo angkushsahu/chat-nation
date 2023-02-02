@@ -1,0 +1,97 @@
+@use "styles/variables" as *;
+@use "styles/breakpoints" as *;
+@use "styles/mixins" as *;
+
+.profile {
+    padding: 2.2rem 2rem calc($header-height + 2rem);
+
+    .decorateUnderline {
+        border-bottom: 0.01rem solid $secondary-hover-color;
+        padding-bottom: 2rem;
+    }
+
+    .centerLine {
+        position: relative;
+        isolation: isolate;
+        color: $secondary-color;
+        background-color: $primary-color;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 100%;
+        }
+        &::before {
+            width: 13ch;
+            background-color: $primary-color;
+            z-index: -1;
+            @include breakpoints(mobile-md) {
+                width: 12ch;
+            }
+        }
+        &::after {
+            max-width: 50rem;
+            width: 100%;
+            height: 0.05rem;
+            z-index: -2;
+            background-color: $secondary-hover-color;
+        }
+    }
+
+    .profileInfo {
+        margin: 4rem 0;
+        .profileInfoDetails {
+            @include flexBox;
+            gap: 10rem;
+            .avatar {
+                $dimension: 10rem;
+                width: $dimension;
+                height: $dimension;
+                object-fit: contain;
+                clip-path: circle(50% at 50% 50%);
+            }
+            & p {
+                color: #ffffff;
+                font-weight: 600;
+                & > span {
+                    font-weight: 400;
+                    color: #ffffff;
+                    &.lighten {
+                        font-weight: 300;
+                        color: $secondary-color;
+                    }
+                }
+            }
+
+            @include breakpoints(mobile-lg) {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+        }
+    }
+
+    .otherActions > div {
+        margin-top: 4rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(10rem, 30rem));
+        grid-gap: 2rem;
+        justify-content: center;
+        button {
+            width: 100%;
+        }
+        @include breakpoints(mobile-lg) {
+            grid-template-columns: repeat(1, minmax(10rem, 25rem));
+        }
+    }
+
+    @include breakpoints(mobile-md) {
+        h1 {
+            font-size: 2.8rem;
+        }
+    }
+}

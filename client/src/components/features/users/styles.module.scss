@@ -1,0 +1,111 @@
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+
+.newChat {
+    background-color: $tertiary-color;
+    color: $primary-color;
+    padding-bottom: $header-height;
+    min-height: 98vh;
+    & > .searchHeader {
+        background-color: $tertiary-color;
+        padding: 1.5rem 1rem;
+        @include flexBox;
+        gap: 1.5rem;
+        flex-direction: column;
+        position: sticky;
+        inset: 0;
+        bottom: auto;
+        .searchBox {
+            @include flexBox;
+            position: relative;
+            box-shadow: $input-box-shadow;
+            max-width: 50rem;
+            width: 100%;
+            background-color: transparent;
+            cursor: pointer;
+            border-radius: 1rem;
+            padding: 0 1rem;
+            gap: 1rem;
+            & > svg {
+                cursor: pointer;
+                font-size: 2rem;
+                color: $tertiary-darker-shade;
+            }
+            input {
+                color: $primary-color;
+                cursor: pointer;
+                background-color: transparent;
+                padding: 1rem;
+                width: 100%;
+                &::placeholder {
+                    color: $tertiary-darker-shade;
+                }
+            }
+            & > button {
+                background-color: hsl(208, 15%, 83%);
+                box-shadow: $input-box-shadow;
+                border-radius: 0 0.4rem 0.4rem 0;
+                position: absolute;
+                inset: 0.1rem;
+                padding: 0.4rem 3rem;
+                left: auto;
+            }
+        }
+        .new_group,
+        .create_group {
+            max-width: 50rem;
+            width: 100%;
+            box-shadow: $input-box-shadow;
+        }
+        .new_group.active {
+            background-color: $secondary-hover-color;
+        }
+    }
+
+    & > .listAllUsers {
+        max-width: 50rem;
+        width: 100%;
+        margin: 0 auto;
+        & > .loading_component {
+            margin-top: 2rem;
+            @include flexBox;
+        }
+        & > .users {
+            border-radius: 0.6rem;
+            cursor: pointer;
+            padding: 2rem 1.5rem;
+            @include flexBox(space-between);
+            &.active {
+                background-color: $card-hover;
+            }
+            & + .users {
+                margin-top: 1rem;
+            }
+            & > .avatar {
+                $dimension: 3.5rem;
+                width: $dimension;
+                height: $dimension;
+                object-fit: contain;
+                border-radius: 50%;
+            }
+            & > .nameAndEmail {
+                & > .email,
+                & > .name {
+                    text-align: right;
+                    margin: 0;
+                }
+                & > .name {
+                    font-weight: 700;
+                    .lighten {
+                        font-size: 1.2rem;
+                        font-weight: 300;
+                    }
+                }
+                & > .email {
+                    font-size: 1.3rem;
+                    margin-top: 0.5rem;
+                }
+            }
+        }
+    }
+}

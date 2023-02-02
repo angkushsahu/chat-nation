@@ -1,0 +1,25 @@
+@use "sass:math";
+
+@function em($pixel) {
+    // if $pixel variable is unitless, then perform the calculation, else throw error
+    @if math.is-unitless($pixel) {
+        @return math.div($pixel, 16) + em;
+    }
+    @error "Cannot use units while using em function. You used an unit with value #{$pixel}";
+}
+
+$breakpoints-scale: (
+    "mobile-sm": em(400),
+    "mobile-md": em(450),
+    "mobile-lg": em(600),
+    "tablet-sm": em(750),
+    "tablet-md": em(800),
+    "responsive-messages": em(1000),
+    "desktop-sm": em(1050),
+);
+
+@mixin breakpoints($size) {
+    @media screen and (max-width: map-get($breakpoints-scale, $size)) {
+        @content;
+    }
+}

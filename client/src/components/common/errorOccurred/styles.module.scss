@@ -1,0 +1,17 @@
+@use "styles/mixins" as *;
+
+.some_error {
+    min-height: 100vh;
+    @include flexBox;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+    h1 {
+        font-size: 3.2rem;
+    }
+    h1,
+    h2 {
+        margin: 0;
+        text-align: center;
+    }
+}

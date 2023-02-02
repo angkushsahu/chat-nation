@@ -1,0 +1,56 @@
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+@use "styles/breakpoints" as *;
+
+.messageHeader {
+    position: absolute;
+    inset: 0;
+    bottom: auto;
+    background-color: $tertiary-color;
+    height: $header-height;
+    padding: 1.5rem 1rem;
+    @include flexBox(space-between);
+
+    & > div:first-child {
+        @include flexBox(flex-start);
+        gap: 2rem;
+        .back_button {
+            cursor: pointer;
+            $dimension: 3rem;
+            width: $dimension;
+            height: $dimension;
+            @include breakpoints(mobile-md) {
+                $dimension: 2rem;
+                width: $dimension;
+                height: $dimension;
+            }
+        }
+        @include breakpoints(mobile-md) {
+            gap: 0.2rem;
+        }
+    }
+    & > div:nth-child(2) {
+        svg {
+            cursor: pointer;
+            $dimension: 2.6rem;
+            width: $dimension;
+            height: $dimension;
+            border-radius: 50%;
+        }
+    }
+
+    .userAvatar {
+        $dimension: 4rem;
+        width: $dimension;
+        height: $dimension;
+        border-radius: 50%;
+    }
+
+    .originalName,
+    .userName {
+        margin: 0;
+    }
+    .originalName {
+        font-size: 1.4rem;
+    }
+}
