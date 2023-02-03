@@ -9,7 +9,6 @@ import routes from "components/app/routes";
 
 const ResetPassword = () => {
     const { id } = useParams();
-    console.log(id);
     const navigate = useNavigate();
     const [resetPassword, { isLoading }] = useResetPasswordMutation();
     const [showPassword, setShowPassword] = useState(false);

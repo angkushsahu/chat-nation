@@ -5,13 +5,8 @@ import { cloudinaryConfig, ErrorHandler, sendEmail, sendToken, validateEmail } f
 import { User } from "../models";
 import * as types from "../types";
 
-export const userRegister = catchAsyncErrors(async function (
-    req: Request,
-    res: Response,
-    next: NextFunction
-) {
+export const userRegister = catchAsyncErrors(async function (req: Request, res: Response, next: NextFunction) {
     const { name, userName, email, password, pic }: types.ISignup = req.body;
-    console.log("REaching signup function");
 
     if (!name || !userName || !email || !password) {
         return next(new ErrorHandler("Please validate all the fields", 400));
@@ -29,7 +24,6 @@ export const userRegister = catchAsyncErrors(async function (
     let image: string = "";
     let publicUrl: string = "";
     if (pic) {
-        console.log("Inside avatar check condition");
         const uploadImage = await cloudinaryConfig.uploader.upload(pic, {
             folder: "chat-nation",
             use_filename: true,
@@ -46,11 +40,7 @@ export const userRegister = catchAsyncErrors(async function (
     sendToken(res, user, 201, "User account created successfully");
 });
 
-export const userLogin = catchAsyncErrors(async function (
-    req: Request,
-    res: Response,
-    next: NextFunction
-) {
+export const userLogin = catchAsyncErrors(async function (req: Request, res: Response, next: NextFunction) {
     const { email, password }: types.ILogin = req.body;
 
     if (!email || !password) {
@@ -74,11 +64,7 @@ export const userLogin = catchAsyncErrors(async function (
     sendToken(res, user, 200, "User login successful");
 });
 
-export const forgotPassword = catchAsyncErrors(async function (
-    req: Request,
-    res: Response,
-    next: NextFunction
-) {
+export const forgotPassword = catchAsyncErrors(async function (req: Request, res: Response, next: NextFunction) {
     const { email }: types.IForgotPassword = req.body;
 
     if (!email) {
@@ -107,11 +93,7 @@ export const forgotPassword = catchAsyncErrors(async function (
     });
 });
 
-export const resetPassword = catchAsyncErrors(async function (
-    req: Request,
-    res: Response,
-    next: NextFunction
-) {
+export const resetPassword = catchAsyncErrors(async function (req: Request, res: Response, next: NextFunction) {
     const { password }: types.IResetPassword = req.body;
     const { id } = req.params;
     const resetId = crypto.createHash("sha256").update(id).digest("hex");

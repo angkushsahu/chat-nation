@@ -24,7 +24,6 @@ const UserBanner = ({ chat }: UserBannerProps) => {
     useEffect(() => {
         if (socket) {
             socket.on("message-received", (newMessage: IMsg) => {
-                console.log("joker", newMessage.chat._id, currentChat?._id, chat._id);
                 if ((!currentChat || currentChat._id !== chat._id) && newMessage.chat._id === chat._id) {
                     setNotification(true);
                 } else if (notification || currentChat?._id === chat._id) {
@@ -32,7 +31,6 @@ const UserBanner = ({ chat }: UserBannerProps) => {
                 }
             });
         }
-        console.log("Running useEffect with all socket events");
     });
 
     useEffect(() => {

@@ -39,7 +39,6 @@ const MessageBody = ({ chatId, setTyping, typing }: SendMessageProps) => {
                 scrollToBottomRef.current?.scrollIntoView();
             });
         }
-        console.log("Running useEffect with all socket events");
     });
     useEffect(() => {
         if (socket) {
@@ -52,7 +51,6 @@ const MessageBody = ({ chatId, setTyping, typing }: SendMessageProps) => {
                 scrollToBottomRef.current?.scrollIntoView();
             });
         }
-        console.log("Running useEffect with all socket events");
     });
 
     if (isLoading) {

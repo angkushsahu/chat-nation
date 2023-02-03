@@ -29,11 +29,9 @@ const UsersList = ({ search }: IUsersProps) => {
             socket.on("message-received", (newMessage: IMsg) => {
                 if (data) {
                     refetch();
-                    console.log("Refetching for you");
                 }
             });
         }
-        console.log("Running useEffect with all socket events");
     });
 
     useEffect(() => {
