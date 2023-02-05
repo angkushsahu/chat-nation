@@ -14,21 +14,24 @@ app.use(express.urlencoded({ extended: true, limit }));
 app.use(express.json({ limit }));
 
 import cors from "cors";
-app.use(cors({ credentials: true, origin: true }));
-// const whiteListedUrls = ["http://localhost:3000"];
-// app.use(
-//     cors({
-//         credentials: true,
-//         origin: function (origin, callBack) {
-//             if (whiteListedUrls.indexOf(origin!) !== -1) {
-//                 callBack(null, true);
-//             } else {
-//                 callBack(new Error("Not a white-listed domain"));
-//             }
-//         },
-//         methods: ["GET", "PUT", "POST", "DELETE"],
-//     })
-// );
+if (process.env.NODE_ENV === "production") {
+    const whiteListedUrls = ["https://chat-nation.onrender.com"];
+    app.use(
+        cors({
+            credentials: true,
+            origin: function (origin, callBack) {
+                if (whiteListedUrls.indexOf(origin!) !== -1) {
+                    callBack(null, true);
+                } else {
+                    callBack(new Error("Not a white-listed domain"));
+                }
+            },
+            methods: ["GET", "PUT", "POST", "DELETE"],
+        })
+    );
+} else {
+    app.use(cors({ credentials: true, origin: true }));
+}
 
 import cookieParser from "cookie-parser";
 app.use(cookieParser());
