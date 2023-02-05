@@ -39,6 +39,15 @@ app.use("/api/user", userRoutes);
 app.use("/api/message", messageRoutes);
 app.use("/api/chat", chatRoutes);
 
+// production deployment
+import { join } from "path";
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(join(__dirname, "../client", "build")));
+    app.get("*", (req, res) => {
+        res.sendFile(join(__dirname, "../client", "build", "index.html"));
+    });
+}
+
 import { error } from "./middlewares";
 app.use(error.invalidUrl);
 app.use(error.errors);
