@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { io } from "socket.io-client";
 import { apiUrl } from "store/apiUrl";
-// import { io, Socket } from "socket.io-client";
-// import { DefaultEventsMap } from "socket.io/dist/typed-events";
 
 interface ISocket {
     socket: any;
